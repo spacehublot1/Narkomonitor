@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Narko-Monitoring</string>
+    <string name="settings_title">Sozlamalar</string>
+    <string name="login_code_title">Telegram tasdiqlash</string>
+</resources>

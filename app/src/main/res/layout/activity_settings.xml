@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/app"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/brand_bg"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Server ulanishi"
+            android:textColor="@color/brand_amber"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Masalan: http://192.168.1.25:8080 (Wi-Fi ichida) yoki ngrok havolasi (https://xxxx.ngrok-free.app)"
+            android:textColor="@color/brand_ink"
+            android:textSize="12sp"
+            android:alpha="0.7"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/editServerUrl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Server manzili (URL)"
+            android:inputType="textUri"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/editDashUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Dashboard login"
+            android:inputType="text"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/editDashPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Dashboard parol"
+            android:inputType="textPassword"
+            android:autofillHints="" />
+
+        <Button
+            android:id="@+id/btnSaveServer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Saqlash va ulanish" />
+
+        <TextView
+            android:id="@+id/textServerStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/brand_ink"
+            android:textSize="13sp" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#3D3220"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Telegram hisobini ulash"
+            android:textColor="@color/brand_amber"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="API_ID va API_HASH my.telegram.org saytidan olinadi. Bu ma'lumotlar faqat serverga yuboriladi, telefonda saqlanmaydi."
+            android:textColor="@color/brand_ink"
+            android:textSize="12sp"
+            android:alpha="0.7"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/editApiId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="API_ID"
+            android:inputType="number"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/editApiHash"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="API_HASH"
+            android:inputType="text"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/editPhone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Telefon raqami (+998...)"
+            android:inputType="phone"
+            android:autofillHints="" />
+
+        <Button
+            android:id="@+id/btnConnectTelegram"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Tasdiqlash kodini yubor" />
+
+        <TextView
+            android:id="@+id/textTelegramStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textColor="@color/brand_ink"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+</ScrollView>
