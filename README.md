@@ -29,7 +29,7 @@ hamon kompyuterda ishlaydi — ilova faqat ko'rish/sozlash uchun.
 ## Ilovani ishlatish
 
 1. Ilovani ochganda "Sozlamalar" ekrani chiqadi.
-2. **Server ulanishi**: server manzilini (masalan `http://192.168.1.25:8080` yoki ngrok
+2. **Server ulanishi**: server manzilini (masalan `http://000.000.0.00:8080` yoki ngrok
    linki), dashboard login/parolni kiritib "Saqlash va ulanish" tugmasini bosing.
 3. **Telegram hisobini ulash** (faqat bot hali birorta Telegram hisobiga ulanmagan bo'lsa
    kerak): API_ID, API_HASH (my.telegram.org saytidan) va telefon raqamni kiritib
