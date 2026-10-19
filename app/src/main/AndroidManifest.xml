@@ -4,12 +4,6 @@
     <!-- Serverga (kompyuterdagi botga) ulanish uchun -->
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <!-- Geo-tagli kamera ekrani uchun -->
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-feature android:name="android.hardware.camera.any" android:required="false" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -43,12 +37,6 @@
             android:name=".LoginCodeActivity"
             android:exported="false"
             android:label="@string/login_code_title" />
-
-        <activity
-            android:name=".CameraActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:label="@string/camera_title" />
 
     </application>
 </manifest>
