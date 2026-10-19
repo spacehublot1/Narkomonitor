@@ -1,6 +1,6 @@
 # Narko-Monitoring — Android ilova
 
-Bu ilova kompyuterda (BlackArch'da) ishlab turgan `gemini_improved.py` botiga ulanib,
+Bu ilova kompyuterda (BlackArch'da) ishlab turgan '******.py` botiga ulanib,
 dashboardni telefonda ko'rsatadi va Telegram hisobini (API_ID/API_HASH/telefon raqam)
 ilova ichidan sozlash imkonini beradi. Kuzatuvning o'zi (OCR, ovozli xabar, AI tekshiruvi)
 hamon kompyuterda ishlaydi — ilova faqat ko'rish/sozlash uchun.
