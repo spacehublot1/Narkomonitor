@@ -78,6 +78,11 @@ class MainActivity : AppCompatActivity() {
             ) {
                 handler.proceed(username, password)
             }
+
+            override fun onPageFinished(view: WebView, url: String?) {
+                super.onPageFinished(view, url)
+                view.evaluateJavascript(BLOB_HOOK_JS, null)
+            }
         }
 
         webView.setDownloadListener { url, _, contentDisposition, mimeType, _ ->
@@ -129,10 +134,14 @@ class MainActivity : AppCompatActivity() {
         val safeName = fileName.replace("'", "")
         val js = """
             (function() {
-              fetch('$url').then(function(r){ return r.blob(); }).then(function(b){
+              var u = '$url';
+              var name = (window.__nmNames && window.__nmNames[u]) || '$safeName';
+              var kept = window.__nmBlobs && window.__nmBlobs[u];
+              var p = kept ? Promise.resolve(kept) : fetch(u).then(function(r){ return r.blob(); });
+              p.then(function(b){
                 var reader = new FileReader();
                 reader.onloadend = function() {
-                  AndroidDownloader.save(reader.result, '$safeName', b.type || '${mimeType ?: ""}');
+                  AndroidDownloader.save(reader.result, name, b.type || '${mimeType ?: ""}');
                 };
                 reader.readAsDataURL(b);
               }).catch(function(e){ AndroidDownloader.fail(String(e)); });
@@ -196,6 +205,38 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun toast(msg: String) = Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+
+    companion object {
+        /**
+         * Dashboard faylni blob qilib yaratib, darhol URL.revokeObjectURL() bilan
+         * o'chirib yuboradi — Android uni o'qishga ulgurmaydi ("Failed to fetch").
+         * Shu skript blob'larni ushlab qoladi, o'chirishni 60 soniyaga kechiktiradi
+         * va <a download="..."> dagi fayl nomini eslab qoladi.
+         */
+        private val BLOB_HOOK_JS = """
+            (function(){
+              if (window.__nmHooked) return; window.__nmHooked = true;
+              window.__nmBlobs = {}; window.__nmNames = {};
+              var oc = URL.createObjectURL.bind(URL), orv = URL.revokeObjectURL.bind(URL);
+              URL.createObjectURL = function(o){
+                var u = oc(o);
+                if (o instanceof Blob) window.__nmBlobs[u] = o;
+                return u;
+              };
+              URL.revokeObjectURL = function(u){
+                setTimeout(function(){ orv(u); delete window.__nmBlobs[u]; delete window.__nmNames[u]; }, 60000);
+              };
+              var remember = function(a){
+                if (a && a.href && a.href.indexOf('blob:') === 0 && a.download) window.__nmNames[a.href] = a.download;
+              };
+              var ocl = HTMLAnchorElement.prototype.click;
+              HTMLAnchorElement.prototype.click = function(){ remember(this); return ocl.apply(this, arguments); };
+              document.addEventListener('click', function(e){
+                var a = e.target && e.target.closest ? e.target.closest('a') : null; remember(a);
+              }, true);
+            })();
+        """.trimIndent()
+    }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
