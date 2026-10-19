@@ -244,9 +244,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.action_settings) {
-            startActivity(Intent(this, SettingsActivity::class.java))
-            return true
+        when (item.itemId) {
+            R.id.action_camera -> {
+                startActivity(Intent(this, CameraActivity::class.java))
+                return true
+            }
+            R.id.action_settings -> {
+                startActivity(Intent(this, SettingsActivity::class.java))
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
     }
